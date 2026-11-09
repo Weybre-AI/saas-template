@@ -1,29 +1,37 @@
-jest.mock("better-auth", () => ({
+jest.mock('better-auth', () => ({
   betterAuth: jest.fn((options) => ({
     options,
   })),
 }));
 
-jest.mock("better-auth/adapters/drizzle", () => ({
+jest.mock('better-auth/adapters/drizzle', () => ({
   drizzleAdapter: jest.fn(),
 }));
 
-import { auth } from "./auth";
+import { auth } from './auth';
 
-describe("Better Auth Configuration", () => {
-  it("should have emailAndPassword enabled and sendResetPassword configured", () => {
+describe('Better Auth Configuration', () => {
+  it('should have emailAndPassword enabled and sendResetPassword configured', () => {
     expect(auth.options.emailAndPassword?.enabled).toBe(true);
-    expect(typeof auth.options.emailAndPassword?.sendResetPassword).toBe("function");
+    expect(typeof auth.options.emailAndPassword?.sendResetPassword).toBe(
+      'function',
+    );
   });
 
-  it("should have google socialProvider configured", () => {
+  it('should have google socialProvider configured', () => {
     expect(auth.options.socialProviders?.google).toBeDefined();
   });
 
-  it("should have accountLinking enabled with google as trusted provider", () => {
+  it('should have accountLinking enabled with google as trusted provider', () => {
     expect(auth.options.account?.accountLinking?.enabled).toBe(true);
-    expect(auth.options.account?.accountLinking?.trustedProviders).toContain("google");
-    expect(auth.options.account?.accountLinking?.requireLocalEmailVerified).toBe(false);
-    expect(auth.options.account?.accountLinking?.updateUserInfoOnLink).toBe(true);
+    expect(auth.options.account?.accountLinking?.trustedProviders).toContain(
+      'google',
+    );
+    expect(
+      auth.options.account?.accountLinking?.requireLocalEmailVerified,
+    ).toBe(false);
+    expect(auth.options.account?.accountLinking?.updateUserInfoOnLink).toBe(
+      true,
+    );
   });
 });

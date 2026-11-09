@@ -45,7 +45,7 @@ export interface NavbarProps {
 
 const DEFAULT_LOGO: NonNullable<NavbarProps["logo"]> = {
   url: "/",
-  title: "Weybre",
+  title: process.env.NEXT_PUBLIC_APP_NAME || "Weybre",
 };
 
 const DEFAULT_MENU: MenuItem[] = [

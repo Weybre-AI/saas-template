@@ -10,11 +10,12 @@ async function bootstrap() {
   const authService = app.get<AuthService>(AuthService);
 
   expressApp.all(
-    /^\/api\/auth\/.*/, toNodeHandler(authService.instance.handler),
+    /^\/api\/auth\/.*/,
+    toNodeHandler(authService.instance.handler),
   );
 
   expressApp.use(require('express').json());
-  app.setGlobalPrefix('api')
+  app.setGlobalPrefix('api');
   await app.listen(process.env.PORT ?? 4000);
 }
 bootstrap();

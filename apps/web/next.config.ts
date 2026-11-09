@@ -5,6 +5,10 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
+        source: "/api/mastra/:path*",
+        destination: "http://localhost:4111/api/:path*"
+      },
+      {
         source: "/api/:path*",
         destination: `${process.env.API_URL}/api/:path*`
       },

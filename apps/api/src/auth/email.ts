@@ -1,4 +1,4 @@
-import { Resend } from "resend";
+import { Resend } from 'resend';
 
 interface SendResetPasswordEmailParams {
   user: {
@@ -17,14 +17,16 @@ export async function sendResetPasswordEmail({
 
   if (!apiKey) {
     console.error(
-      "[Resend] Neither RESEND_URL nor RESEND_API_KEY is defined in environment variables."
+      '[Resend] Neither RESEND_URL nor RESEND_API_KEY is defined in environment variables.',
     );
-    throw new Error("Resend API key is missing. Please check your environment configuration.");
+    throw new Error(
+      'Resend API key is missing. Please check your environment configuration.',
+    );
   }
 
   const resend = new Resend(apiKey);
-  const from = process.env.EMAIL_FROM || "Weybre AI <onboarding@weybre.com>";
-  const displayName = user.name || "there";
+  const from = process.env.EMAIL_FROM || 'Weybre AI <onboarding@weybre.com>';
+  const displayName = user.name || 'there';
 
   const html = `
 <!DOCTYPE html>
@@ -79,15 +81,17 @@ This link will expire in 1 hour. If you didn't request a password reset, you can
   const { data, error } = await resend.emails.send({
     from,
     to: user.email,
-    subject: "Reset your password - Weybre AI",
+    subject: 'Reset your password - Weybre AI',
     html,
     text,
   });
 
   if (error) {
-    console.error("[Resend] Failed to send password reset email:", error);
+    console.error('[Resend] Failed to send password reset email:', error);
     throw new Error(`Failed to send password reset email: ${error.message}`);
   }
 
-  console.log(`[Resend] Password reset email sent successfully to ${user.email} (Email ID: ${data?.id})`);
+  console.log(
+    `[Resend] Password reset email sent successfully to ${user.email} (Email ID: ${data?.id})`,
+  );
 }

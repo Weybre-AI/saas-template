@@ -29,7 +29,7 @@ interface FooterProps {
 }
 
 const defaultProps: FooterProps = {
-  logo: { url: "/", title: "Weybre" },
+  logo: { url: "/", title: process.env.NEXT_PUBLIC_APP_NAME || "Weybre" },
   description: "Software for the decisions that matter most.",
   sections: [
     {
@@ -69,7 +69,7 @@ const defaultProps: FooterProps = {
       ],
     },
   ],
-  copyright: `© ${new Date().getFullYear()} Weybre. All rights reserved.`,
+  copyright: `\u00A9 ${new Date().getFullYear()} ${process.env.NEXT_PUBLIC_APP_COMPANY || process.env.NEXT_PUBLIC_APP_NAME || "Weybre"}. All rights reserved.`,
   legalLinks: [
     { name: "Terms", href: "#" },
     { name: "Privacy", href: "#" },
