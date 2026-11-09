@@ -1,4 +1,4 @@
-# 🚀 Weybre SaaS Boilerplate
+# 🚀 SaaS Boilerplate
 
 A modern, full-stack, enterprise-ready SaaS boilerplate built with **Next.js**, **NestJS**, and **Turborepo**. Designed to help you launch your next AI-powered SaaS or web application at warp speed. 
 
