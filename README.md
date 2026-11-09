@@ -67,7 +67,7 @@ pnpm install
 ```
 
 ### 3. Environment Configuration
-Create a `.env` file in the root of the project (you can copy your existing setups).
+Create a `.env` file in the root of the project (you can copy your existing setups) and in /api.
 
 ```ini
 # --- Branding (White-label your app) ---
@@ -87,6 +87,18 @@ GOOGLE_CLIENT_SECRET="your-google-client-secret"
 GOOGLE_CLOUD_PROJECT="your-gcp-project"
 ```
 *(Note: Changing `NEXT_PUBLIC_APP_NAME` will automatically update the logo text, page titles, and footers across the web app!)*
+### API .env
+
+PORT=
+DATABASE_URL=""
+BETTER_AUTH_SECRET=
+BETTER_AUTH_URL=http # Base URL of your app
+BACKEND_PROT="http://localhost:3001"
+RESEND_URL=
+EMAIL_FROM="yourmail@example.com"
+# Google OAuth credentials
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
 
 ### 4. Database Setup
 Navigate to the API and push your Drizzle schema to the database:
